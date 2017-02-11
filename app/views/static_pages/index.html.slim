@@ -1,5 +1,11 @@
 h1 Stage.new
 
-ul
-  li = link_to 'Githubでログイン', user_github_omniauth_authorize_path
-  li = link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path
+p 転職活動をもっとスマートに
+
+ul.list-inline.login-buttons
+  li = link_to user_github_omniauth_authorize_path, class: 'btn btn-info btn-lg github' do
+    i.fa.fa-github>
+    span Githubでログイン
+  li = link_to user_twitter_omniauth_authorize_path, class: 'btn btn-info btn-lg twitter' do
+    i.fa.fa-twitter>
+    span Twitterでログイン

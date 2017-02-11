@@ -1,3 +1,17 @@
-// Place all the styles related to the static_pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body.static_pages.index {
+  & { text-align: center; }
+
+  .login-buttons {
+    .btn {
+      transition: all 0.5s;
+    }
+    .github {
+      background-color: #303030;
+      &:hover { background-color: #383838; }
+    }
+    .twitter {
+      background-color: #1da1f3;
+      &:hover { background-color: #29adff; }
+    }
+  }
+}
