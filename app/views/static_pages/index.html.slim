@@ -1,2 +1,5 @@
-h1 StaticPages#index
-p Find me in app/views/static_pages/index.html.slim
+h1 Stage.new
+
+ul
+  li = link_to 'Githubでログイン', user_github_omniauth_authorize_path
+  li = link_to 'Twitterでログイン', user_twitter_omniauth_authorize_path

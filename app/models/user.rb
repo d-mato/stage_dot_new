@@ -2,6 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :omniauthable, :recoverable, :trackable
 
   has_many :social_profiles, dependent: :destroy
+  has_many :companies, dependent: :destroy
 
   validates :email, uniqueness: true
 
