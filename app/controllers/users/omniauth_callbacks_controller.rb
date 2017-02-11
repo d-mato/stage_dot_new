@@ -2,11 +2,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   before_action :set_or_create_social_profile, only: [:github, :twitter]
 
   def github
-    render json: request.env['omniauth.auth']
+    redirect_to root_path
   end
 
   def twitter
-    render json: request.env['omniauth.auth']
+    redirect_to root_path
   end
 
   private
