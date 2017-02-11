@@ -1,13 +1,7 @@
 class InterviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_company, only: [:index, :new, :create]
+  before_action :set_company, only: [:new, :create]
   before_action :set_interview, only: [:show, :edit, :update, :destroy]
-
-  # GET /interviews
-  # GET /interviews.json
-  def index
-    @interviews = Interview.all
-  end
 
   # GET /interviews/1
   # GET /interviews/1.json
@@ -77,6 +71,6 @@ class InterviewsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def interview_params
-    params.require(:interview).permit(:company_id, :type, :start_at, :impression)
+    params.require(:interview).permit(:company_id, :category, :start_at, :impression)
   end
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :companies, shallow: true do
-    resources :interviews
+    resources :interviews, except: [:index]
   end
 
   authenticated :user do

@@ -1,9 +1,34 @@
-p#notice = notice
+nav
+  ul.breadcrumb
+    li = link_to :companies, companies_path
+    li = @company.name
 
-p
-  strong Name:
-  = @company.name
+h1 = @company.name
 
 = link_to 'Edit', edit_company_path(@company)
 '|
+= link_to 'Destroy', @company, data: { confirm: 'Are you sure?' }, method: :delete
+'|
 = link_to 'Back', companies_path
+
+h3 interviews
+
+table
+  thead
+    tr
+      th Category
+      th Start at
+      th Impression
+      th
+
+  tbody
+    - @company.interviews.each do |interview|
+      tr
+        td
+          span.label.label-primary = interview.category
+        td = interview.start_at
+        td
+          pre = interview.impression
+        td = link_to 'Show', interview
+
+= link_to 'New Interview', new_company_interview_path(@company)

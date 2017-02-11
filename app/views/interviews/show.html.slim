@@ -1,8 +1,12 @@
-p#notice = notice
+nav
+  ul.breadcrumb
+    li = link_to :companies, companies_path
+    li = link_to @interview.company.name, @interview.company
+    li = "interviews##{@interview.id}"
 
 p
   strong Company:
-  = @interview.company
+  = @interview.company.name
 p
   strong Category:
   = @interview.category
@@ -15,4 +19,4 @@ p
 
 = link_to 'Edit', edit_interview_path(@interview)
 '|
-= link_to 'Back', company_interviews_path(@interview.company)
+= link_to 'Back', company_path(@interview.company)

@@ -62,4 +62,5 @@ gem 'rails_admin'
 
 gem 'pry-rails'
 
+gem 'bootstrap-sass'
 gem 'slim-rails'

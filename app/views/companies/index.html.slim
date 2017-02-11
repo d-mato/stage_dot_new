@@ -1,20 +1,18 @@
-h1 Listing companies
+h1 企業リスト
 
-table
+table.table
   thead
     tr
-      th Name
-      th
-      th
-      th
+      th 名前
+      th 訪問回数
+      th 予定
 
   tbody
     - @companies.each do |company|
       tr
-        td = company.name
-        td = link_to 'Show', company
-        td = link_to 'Edit', edit_company_path(company)
-        td = link_to 'Destroy', company, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to company.name, company
+        td = company.interviews.finished.size
+        td = company.interviews.scheduled.first.try :start_at
 
 br
 

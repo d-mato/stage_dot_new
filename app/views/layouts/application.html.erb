@@ -9,15 +9,16 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <div>
+    <div class="container">
       <% if user_signed_in? %>
         <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
       <% end %>
     </div>
 
-    <%= yield %>
+    <div class="container">
+      <%= render 'layouts/flash_messages' %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
