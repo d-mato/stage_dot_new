@@ -1,4 +1,4 @@
-h1 企業リスト
+h3 企業リスト
 
 table.table
   thead
@@ -12,7 +12,10 @@ table.table
       tr
         td = link_to company.name, company
         td = company.interviews.finished.size
-        td = company.interviews.scheduled.first.try :start_at
+        td
+          - if company.next_interview_start_at
+            = company.next_interview_start_at.to_s(:ja)
+            label = "(あと#{distance_of_time_in_words_to_now(company.next_interview_start_at)})"
 
 br
 

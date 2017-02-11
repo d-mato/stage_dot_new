@@ -62,5 +62,6 @@ gem 'rails_admin'
 
 gem 'pry-rails'
 
-gem 'bootstrap-sass'
 gem 'slim-rails'
+
+gem 'rails-assets-autosize', source: 'https://rails-assets.org'

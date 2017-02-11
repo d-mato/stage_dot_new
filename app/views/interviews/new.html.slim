@@ -1,12 +1,11 @@
-nav
+- content_for :breadcrumb
   ul.breadcrumb
     li = link_to :companies, companies_path
     li = link_to @company.name, @company
     li new interview
 
-
 h1 New interview
 
 == render 'form'
 
-= link_to 'Back', company_interviews_path
+= link_to 'Back', company_path(@company)

@@ -1,8 +1,9 @@
-h1 Editing company
+- content_for :breadcrumb
+  ul.breadcrumb
+    li = link_to :companies, companies_path
+    li = link_to @company.name, @company
+    li edit
 
-== render 'form'
+h3 = @company.name
 
-= link_to 'Show', @company
-'|
-= link_to 'Back', companies_path
-
+.well == render 'form'

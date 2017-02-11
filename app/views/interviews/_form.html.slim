@@ -6,13 +6,15 @@
         - @interview.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :category
-    = f.select :category, %w(カジュアル面談 面接)
-  .field
-    = f.label :start_at
-    = f.datetime_select :start_at
+  .row
+    .col-xs-2
+      = f.label :category
+      = f.select :category, %w(カジュアル面談 面接), {}, class: 'form-control'
+    .col-xs-3
+      = f.label :start_at
+      = f.datetime_field :start_at, class: 'form-control'
   .field
     = f.label :impression
-    = f.text_area :impression
-  .actions = f.submit
+    = f.text_area :impression, class: 'form-control'
+
+  .actions = f.submit :submit, class: 'btn btn-primary'

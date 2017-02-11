@@ -1,34 +1,48 @@
-nav
+- content_for :breadcrumb
   ul.breadcrumb
     li = link_to :companies, companies_path
     li = @company.name
 
-h1 = @company.name
+h3 = @company.name
 
-= link_to 'Edit', edit_company_path(@company)
-'|
-= link_to 'Destroy', @company, data: { confirm: 'Are you sure?' }, method: :delete
-'|
-= link_to 'Back', companies_path
+nav
+  = link_to 'Edit', edit_company_path(@company)
+  '|
+  = link_to 'Back', companies_path
 
-h3 interviews
+ul.list-inline
+  li 社員数 #{@company.employee_count}
+  li エンジニア人数 #{@company.engineer_count}
 
-table
-  thead
-    tr
-      th Category
-      th Start at
-      th Impression
-      th
+- if @company.good.present?
+  label Good!!
+  pre = @company.good
 
-  tbody
-    - @company.interviews.each do |interview|
+- if @company.bad.present?
+  label Bad...
+  pre = @company.bad
+
+- if @company.motivation.present?
+  label Motivation
+  pre = @company.motivation
+
+.well
+  h4 interviews
+
+  table.table
+    thead
       tr
-        td
-          span.label.label-primary = interview.category
-        td = interview.start_at
-        td
-          pre = interview.impression
-        td = link_to 'Show', interview
+        th Start at
+        th Category
+        th Impression
 
-= link_to 'New Interview', new_company_interview_path(@company)
+    tbody
+      - @company.interviews.each do |interview|
+        tr
+          td = link_to interview.start_at.to_s(:ja), interview
+          td
+            span.label.label-primary = interview.category
+          td
+            = link_to truncate(interview.impression, length: 60), interview
+
+  = link_to 'New Interview', new_company_interview_path(@company)
