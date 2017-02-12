@@ -1,5 +1,4 @@
 RailsAdmin.config do |config|
-
   ### Popular gems integration
 
   ## == Devise ==
@@ -7,6 +6,11 @@ RailsAdmin.config do |config|
   #   warden.authenticate! scope: :user
   # end
   # config.current_user_method(&:current_user)
+  config.authorize_with do
+    authenticate_or_request_with_http_basic('Login required') do |username, password|
+      (username == ENV['BASIC_AUTH_USERNAME'] && password == ENV['BASIC_AUTH_PASSWORD']) || Rails.env.development?
+    end
+  end
 
   ## == Cancan ==
   # config.authorize_with :cancan
