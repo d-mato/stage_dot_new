@@ -1,0 +1,7 @@
+#flash_messages {
+  transition: all 0.5s;
+
+  &.fade {
+    opacity: 0;
+  }
+}

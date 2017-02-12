@@ -1,2 +1,3 @@
-- flash.each do |key, value|
-  div.alert class="alert-#{key}" = value
+#flash_messages.pull-right
+  - flash.each do |key, value|
+    .alert class="alert-#{key}" = value
