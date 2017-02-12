@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_many :social_profiles, dependent: :destroy
   has_many :companies, dependent: :destroy
+  has_many :interviews, through: :companies
 
   validates :email, uniqueness: true
 

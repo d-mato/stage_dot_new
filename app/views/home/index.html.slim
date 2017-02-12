@@ -1,2 +1,17 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+h3 予定
+
+table.table
+  thead
+    tr
+      th 日付
+      th 種類
+      th 企業
+  tbody
+    - @scheduled_inteviews.each do |interview|
+      tr
+        td
+          = interview.start_at.to_s(:ja)
+          label = "(あと#{distance_of_time_in_words_to_now(interview.start_at)})"
+        td
+          span.label.label-primary = interview.category
+        td = link_to interview.company.name, interview.company
