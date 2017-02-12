@@ -16,15 +16,15 @@ ul.list-inline
 
 - if @company.good.present?
   label Good!!
-  pre = @company.good
+  .markdown = @company.good
 
 - if @company.bad.present?
   label Bad...
-  pre = @company.bad
+  .markdown = @company.bad
 
 - if @company.motivation.present?
   label Motivation
-  pre = @company.motivation
+  .markdown = @company.motivation
 
 .well
   h4 interviews

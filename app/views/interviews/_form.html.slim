@@ -13,8 +13,15 @@
     .col-xs-3
       = f.label :start_at
       = f.datetime_field :start_at, class: 'form-control'
-  .field
-    = f.label :impression
-    = f.text_area :impression, class: 'form-control'
 
-  .actions = f.submit :submit, class: 'btn btn-primary'
+  .row
+    .col-xs-6
+      = f.label :impression
+      = f.text_area :impression, class: 'form-control'
+    .col-xs-6
+      label preview
+      .preview data-target="#interview_impression"
+
+  .actions
+    = f.submit :submit, class: 'btn btn-primary'
+    = link_to 'back', @interview.new_record? ? @company : @interview, class: 'btn btn-default'

@@ -40,7 +40,14 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    autoprefixer-rails (6.7.2)
+      execjs
     bcrypt (3.1.11)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
+    bootswatch-rails (3.3.5)
+      railties (>= 3.1)
     builder (3.2.3)
     byebug (9.0.6)
     coderay (1.1.1)
@@ -154,6 +161,7 @@ GEM
       railties (= 5.0.1)
       sprockets-rails (>= 2.0.0)
     rails-assets-autosize (3.0.20)
+    rails-assets-marked (0.3.6)
     rails-dom-testing (2.0.2)
       activesupport (>= 4.2.0, < 6.0)
       nokogiri (~> 1.6)
@@ -239,6 +247,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass (~> 3)
+  bootswatch-rails
   byebug
   coffee-rails (~> 4.2)
   devise
@@ -251,6 +261,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.1)
   rails-assets-autosize!
+  rails-assets-marked!
   rails_admin
   sass-rails (~> 5.0)
   slim-rails

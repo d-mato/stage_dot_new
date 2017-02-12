@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 
+// Rails assets
 //= require autosize
+//= require marked
 
 //= require_tree .

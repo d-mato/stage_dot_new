@@ -20,7 +20,7 @@
 
   p
     strong Impression:
-    pre = @interview.impression
+    .markdown = @interview.impression
 
   = link_to 'Edit', edit_interview_path(@interview)
   '|

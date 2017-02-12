@@ -16,15 +16,27 @@
     .col-xs-2
       = f.label :engineer_count
       = f.number_field :engineer_count, class: 'form-control'
-  div
-    = f.label :good
-    = f.text_area :good, class: 'form-control'
-  div
-    = f.label :bad
-    = f.text_area :bad, class: 'form-control'
-  div
-    = f.label :motivation
-    = f.text_area :motivation, class: 'form-control'
+  .row
+    .col-xs-6
+      = f.label :good
+      = f.text_area :good, class: 'form-control'
+    .col-xs-6
+      label preview
+      .preview data-target="#company_good"
+  .row
+    .col-xs-6
+      = f.label :bad
+      = f.text_area :bad, class: 'form-control'
+    .col-xs-6
+      label preview
+      .preview data-target="#company_bad"
+  .row
+    .col-xs-6
+      = f.label :motivation
+      = f.text_area :motivation, class: 'form-control'
+    .col-xs-6
+      label preview
+      .preview data-target="#company_motivation"
 
   .actions
     = f.submit 'submit', class: 'btn btn-primary'
