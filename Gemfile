@@ -74,3 +74,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-autosize'
   gem 'rails-assets-marked'
 end
+
+group :development, :test do
+  gem 'rspec-rails'
+end
