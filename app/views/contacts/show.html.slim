@@ -1,0 +1,13 @@
+h1 お問い合わせ
+
+= form_for @contact, url: contact_path do |f|
+  .row.form-group
+    .col-sm-6
+      = f.text_field :name, class: 'form-control', placeholder: '名前', required: true
+    .col-sm-6
+      = f.email_field :email, class: 'form-control', placeholder: 'メールアドレス', required: true
+  .form-group
+    = f.text_area :text, class: 'form-control', placeholder: 'メッセージ', required: true
+
+  .form-actions
+  = f.submit '送信', class: 'btn btn-success'
