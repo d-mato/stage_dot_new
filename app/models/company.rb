@@ -8,4 +8,8 @@ class Company < ApplicationRecord
     return unless interviews.scheduled.present?
     interviews.scheduled.first.start_at
   end
+
+  def visit_count
+    interviews.finished.size
+  end
 end

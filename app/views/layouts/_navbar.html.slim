@@ -1,0 +1,18 @@
+nav.navbar.navbar-default
+  .navbar-header
+    button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar"
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    = link_to 'Stage.new', root_path, class: 'navbar-brand'
+
+  .navbar-collapse.collapse#navbar
+    ul.nav.navbar-nav
+      li class="#{:active if controller_name == 'home'}"
+        = link_to 'Home', root_path
+      li class="#{:active if controller_name == 'companies'}"
+        = link_to 'Companies', companies_path
+
+    ul.nav.navbar-nav.navbar-right
+      li = link_to('Logout', destroy_user_session_path, method: :delete) if user_signed_in?

@@ -11,7 +11,7 @@ table.table
     - @companies.each do |company|
       tr
         td = link_to company.name, company
-        td = company.interviews.finished.size
+        td = company.visit_count
         td
           - if company.next_interview_start_at
             span.visible-xs-inline = company.next_interview_start_at.strftime('%m/%d %H:%M')
