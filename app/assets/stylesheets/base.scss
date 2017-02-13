@@ -1,4 +1,10 @@
+.container#main {
+  position: relative;
+}
+
 #flash_messages {
+  position: absolute;
+  right: 15px;
   transition: all 0.5s;
 
   &.fade {

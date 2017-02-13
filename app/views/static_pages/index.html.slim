@@ -1,11 +1,12 @@
-h1 Stage.new
+.jumbotron
+  h1 Stage.new
 
-p 転職活動をもっとスマートに
+  p 転職活動をもっとスマートに
 
-ul.list-inline.login-buttons
-  li = link_to user_github_omniauth_authorize_path, class: 'btn btn-info btn-lg github' do
-    i.fa.fa-github>
-    span Githubでログイン
-  li = link_to user_twitter_omniauth_authorize_path, class: 'btn btn-info btn-lg twitter' do
-    i.fa.fa-twitter>
-    span Twitterでログイン
+  ul.list-inline.login-buttons
+    li = link_to user_github_omniauth_authorize_path, class: 'btn btn-info btn-lg github' do
+      i.fa.fa-github>
+      span Githubでログイン
+    li = link_to user_twitter_omniauth_authorize_path, class: 'btn btn-info btn-lg twitter' do
+      i.fa.fa-twitter>
+      span Twitterでログイン
