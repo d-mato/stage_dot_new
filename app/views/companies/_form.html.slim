@@ -7,34 +7,34 @@
           li = message
 
   .row
-    .col-xs-3
+    .col-sm-3
       = f.label :name
       = f.text_field :name, class: 'form-control'
-    .col-xs-2
+    .col-sm-2.col-xs-6
       = f.label :employee_count
       = f.number_field :employee_count, class: 'form-control'
-    .col-xs-2
+    .col-sm-2.col-xs-6
       = f.label :engineer_count
       = f.number_field :engineer_count, class: 'form-control'
   .row
-    .col-xs-6
+    .col-sm-6
       = f.label :good
       = f.text_area :good, class: 'form-control'
-    .col-xs-6
+    .col-sm-6.hidden-xs
       label preview
       .preview data-target="#company_good"
   .row
-    .col-xs-6
+    .col-sm-6
       = f.label :bad
       = f.text_area :bad, class: 'form-control'
-    .col-xs-6
+    .col-sm-6.hidden-xs
       label preview
       .preview data-target="#company_bad"
   .row
-    .col-xs-6
+    .col-sm-6
       = f.label :motivation
       = f.text_area :motivation, class: 'form-control'
-    .col-xs-6
+    .col-sm-6.hidden-xs
       label preview
       .preview data-target="#company_motivation"
 

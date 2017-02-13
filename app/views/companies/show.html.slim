@@ -40,8 +40,7 @@ ul.list-inline
       - @company.interviews.each do |interview|
         tr
           td = link_to interview.start_at.to_s(:ja), interview
-          td
-            span.label.label-primary = interview.category
+          td = category_label(interview.category)
           td
             = link_to truncate(interview.impression, length: 60), interview
 

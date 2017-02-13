@@ -7,18 +7,18 @@
           li = message
 
   .row
-    .col-xs-2
+    .col-md-3.col-sm-6
       = f.label :category
       = f.select :category, %w(カジュアル面談 面接), {}, class: 'form-control'
-    .col-xs-3
+    .col-md-4.col-sm-6
       = f.label :start_at
       = f.datetime_field :start_at, class: 'form-control'
 
   .row
-    .col-xs-6
+    .col-sm-6
       = f.label :impression
       = f.text_area :impression, class: 'form-control'
-    .col-xs-6
+    .col-sm-6.hidden-xs
       label preview
       .preview data-target="#interview_impression"
 

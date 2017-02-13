@@ -10,8 +10,8 @@ table.table
     - @scheduled_inteviews.each do |interview|
       tr
         td
-          = interview.start_at.to_s(:ja)
-          label = "(あと#{distance_of_time_in_words_to_now(interview.start_at)})"
-        td
-          span.label.label-primary = interview.category
+          span.visible-xs-inline = interview.start_at.strftime('%m/%d %H:%M')
+          span.hidden-xs = interview.start_at.to_s(:ja)
+          span.small = "(あと#{distance_of_time_in_words_to_now(interview.start_at)})"
+        td = category_label(interview.category)
         td = link_to interview.company.name, interview.company

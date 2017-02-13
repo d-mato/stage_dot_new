@@ -14,8 +14,9 @@ table.table
         td = company.interviews.finished.size
         td
           - if company.next_interview_start_at
-            = company.next_interview_start_at.to_s(:ja)
-            label = "(あと#{distance_of_time_in_words_to_now(company.next_interview_start_at)})"
+            span.visible-xs-inline = company.next_interview_start_at.strftime('%m/%d %H:%M')
+            span.hidden-xs = company.next_interview_start_at.to_s(:ja)
+            span.small = "(あと#{distance_of_time_in_words_to_now(company.next_interview_start_at)})"
 
 br
 

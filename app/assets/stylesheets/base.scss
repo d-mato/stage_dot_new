@@ -5,3 +5,8 @@
     opacity: 0;
   }
 }
+
+.label {
+  &.casual { background-color: #5cb85c; }
+  &.formal { background-color: #DF691A; }
+}
