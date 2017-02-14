@@ -3,12 +3,16 @@
     li = link_to :companies, companies_path
     li = @company.name
 
-h3 = @company.name
+h3
+  = @company.name
+  - if @company.via.present?
+    small = "(#{@company.via}経由)"
 
 nav
   = link_to 'Edit', edit_company_path(@company)
   '|
   = link_to 'Back', companies_path
+
 
 ul.list-inline
   li 社員数 #{@company.employee_count}
