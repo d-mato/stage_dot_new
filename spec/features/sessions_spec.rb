@@ -35,4 +35,11 @@ RSpec.feature 'Sessions' do
       click_link 'Githubでログイン'
     end
   end
+
+  describe 'No session' do
+    specify 'トップページにリダイレクトされること' do
+      visit '/companies'
+      expect(page.current_path).to eq '/'
+    end
+  end
 end
