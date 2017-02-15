@@ -76,5 +76,6 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
+  gem 'capybara'
   gem 'rspec-rails'
 end
