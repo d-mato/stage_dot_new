@@ -13,7 +13,14 @@ RSpec.feature 'Sessions' do
       expect(page).to have_content 'Logout'
     end
 
+    specify 'UserProfileが登録されていること' do
+      expect(profile).not_to be_nil
+      expect(profile.email).to eq email
+      expect(profile.nickname).to eq nickname
+    end
+
     specify 'Userが登録されていること' do
+      expect(profile.user).not_to be_nil
       expect(profile.user.email).to eq email
       expect(profile.user.name).to eq nickname
     end
