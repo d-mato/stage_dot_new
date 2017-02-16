@@ -13,6 +13,8 @@ nav.navbar.navbar-default
         = link_to 'Home', root_path
       li class="#{:active if controller_name == 'companies'}"
         = link_to 'Companies', companies_path
+      li class="#{:active if controller_name == 'interviews'}"
+        = link_to 'Interviews', interviews_path
 
     ul.nav.navbar-nav.navbar-right
       li = link_to('Logout', destroy_user_session_path, method: :delete) if user_signed_in?

@@ -1,0 +1,11 @@
+h3 Interviews
+
+table.table
+  thead
+  tbody
+    - @interviews.each do |interview|
+      tr
+        td = link_to interview.company.name, interview.company
+        td = link_to interview.start_at.to_s(:ja), interview
+        td = category_label(interview.category)
+        td = truncate(interview.impression, length: 60)

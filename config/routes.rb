@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :interviews, except: [:index]
   end
 
+  resources :interviews, only: [:index]
+
   resource :contact, only: [:show, :create]
 
   authenticated :user do

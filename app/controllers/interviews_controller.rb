@@ -3,12 +3,17 @@ class InterviewsController < ApplicationController
   before_action :set_company, only: [:new, :create]
   before_action :set_interview, only: [:show, :edit, :update, :destroy]
 
+  # GET /interviews
+  def index
+    @interviews = current_user.interviews.order(start_at: :desc)
+  end
+
   # GET /interviews/1
   # GET /interviews/1.json
   def show
   end
 
-  # GET /interviews/new
+  # GET /companies/:company_id/interviews/new
   def new
     @interview = Interview.new
   end
@@ -17,8 +22,8 @@ class InterviewsController < ApplicationController
   def edit
   end
 
-  # POST /interviews
-  # POST /interviews.json
+  # POST /companies/:company_id/interviews
+  # POST /companies/:company_id/interviews.json
   def create
     @interview = Interview.new(interview_params)
     @interview.company = @company
