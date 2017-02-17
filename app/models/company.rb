@@ -2,6 +2,8 @@ class Company < ApplicationRecord
   belongs_to :user
   has_many :interviews
 
+  scope :archived, -> { where.not(archived_at: nil) }
+
   validates :name, presence: true
 
   def next_interview_start_at

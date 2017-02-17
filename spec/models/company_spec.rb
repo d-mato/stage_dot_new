@@ -16,7 +16,7 @@ describe Company do
     expect(company.errors.size).to eq 0
   end
 
-  describe :methods do
+  describe 'Methods' do
     let(:company) { Company.create(user_id: user.id, name: 'Gooogle') }
     let(:next_time) { 4.hours.since } # 4時間後
 
@@ -37,6 +37,23 @@ describe Company do
       expect(company.next_interview_start_at.to_s).to eq next_time.to_s
       company.interviews.destroy_all
       expect(company.next_interview_start_at).to be_nil
+    end
+  end
+
+  describe 'Scopes' do
+    let(:companies) { FactoryGirl.create_list(:company, 10) }
+
+    describe :archived do
+      subject { Company.archived }
+
+      it { is_expected.to eq [] }
+
+      it do
+        companies[0].update(archived_at: Time.zone.now)
+        companies[1].update(archived_at: Time.zone.now)
+        companies[2].update(archived_at: Time.zone.now)
+        is_expected.to eq [companies[0], companies[1], companies[2]]
+      end
     end
   end
 end
