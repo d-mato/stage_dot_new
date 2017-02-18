@@ -1,0 +1,15 @@
+h3 企業リスト (アーカイブ済み)
+
+table.table
+  thead
+    tr
+      th 名前
+      th 訪問<br class="visible-xs">回数
+
+  tbody
+    - @companies.each do |company|
+      tr
+        td = link_to company.name, company
+        td = company.visit_count
+
+= link_to 'Companies', companies_path

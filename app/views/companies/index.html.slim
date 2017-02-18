@@ -18,6 +18,6 @@ table.table
             span.hidden-xs = company.next_interview_start_at.to_s(:ja)
             span.small = "(あと#{distance_of_time_in_words_to_now(company.next_interview_start_at)})"
 
-br
+= link_to 'New Company', new_company_path, class: 'btn btn-default'
 
-= link_to 'New Company', new_company_path
+.pull-right = link_to 'Archives', archives_companies_path

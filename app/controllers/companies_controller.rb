@@ -1,11 +1,11 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :archive]
 
   # GET /companies
   # GET /companies.json
   def index
-    @companies = current_user.companies
+    @companies = current_user.companies.not_archived
   end
 
   # GET /companies/1
@@ -63,11 +63,32 @@ class CompaniesController < ApplicationController
     end
   end
 
+  # GET /companies/archives
+  def archives
+    @companies = current_user.companies.archived
+  end
+
+  # POST/DELETE /companies/1/archive
+  def archive
+    if request.post?
+      @company.archive!
+      msg = 'アーカイブしました'
+    elsif request.delete?
+      @company.restore!
+      msg = 'アーカイブからリストアしました'
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @company, flash: { success: msg } }
+      format.json { render json: @company }
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_company
-    @company = current_user.companies.find(params[:id])
+    @company = current_user.companies.find(params[:id] || params[:company_id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
