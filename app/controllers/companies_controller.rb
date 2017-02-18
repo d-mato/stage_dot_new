@@ -5,7 +5,11 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = current_user.companies
+    @companies = current_user.companies.not_archived
+  end
+
+  def archives
+    @companies = current_user.companies.archived
   end
 
   # GET /companies/1

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :companies, shallow: true do
+    get :archives, on: :collection
     resources :interviews, except: [:index]
   end
 

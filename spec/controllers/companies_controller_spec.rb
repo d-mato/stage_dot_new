@@ -3,6 +3,7 @@ require 'rails_helper'
 describe CompaniesController, type: :controller do
   let(:user) { FactoryGirl.create :user }
   let(:companies) { FactoryGirl.create_list(:company, 10, user_id: user.id) }
+  let(:archived_companies) { FactoryGirl.create_list(:company, 10, archived_at: Time.zone.now, user_id: user.id) }
   let(:someone) { FactoryGirl.create :user }
   let(:someones_companies) { FactoryGirl.create_list(:company, 10, user_id: someone.id) }
 
@@ -13,8 +14,18 @@ describe CompaniesController, type: :controller do
 
     it('returns 200') { expect(response.status).to eq 200 }
 
-    it '@companiesにcurrent_userに属するCompanyを割り当てること' do
+    it '@companiesにcurrent_userに属するアーカイブされていないCompanyを割り当てること' do
       expect(assigns(:companies)).to eq companies
+    end
+  end
+
+  describe 'GET #archives' do
+    before { get :archives }
+
+    it('returns 200') { expect(response.status).to eq 200 }
+
+    it '@companiesにcurrent_userに属するアーカイブされているCompanyを割り当てること' do
+      expect(assigns(:companies)).to eq archived_companies
     end
   end
 
