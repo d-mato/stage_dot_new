@@ -45,6 +45,14 @@ describe Company do
         expect(company.next_interview_start_at).to be_nil
       end
     end
+
+    describe :archive! do
+      it 'assigns archived_at datetime' do
+        company.archived_at = nil
+        company.archive!
+        expect(company.archived_at).not_to be_nil
+      end
+    end
   end
 
   describe 'Scopes' do
