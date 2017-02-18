@@ -11,6 +11,10 @@ class Company < ApplicationRecord
     update(archived_at: Time.zone.now)
   end
 
+  def restore!
+    update(archived_at: nil)
+  end
+
   def next_interview_start_at
     return unless interviews.scheduled.present?
     interviews.scheduled.first.start_at

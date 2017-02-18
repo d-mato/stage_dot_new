@@ -47,10 +47,18 @@ describe Company do
     end
 
     describe :archive! do
-      it 'assigns archived_at datetime' do
+      it 'assigns datetime to archived_at' do
         company.archived_at = nil
         company.archive!
         expect(company.archived_at).not_to be_nil
+      end
+    end
+
+    describe :restore! do
+      it 'assigns nil to archived_at' do
+        company.archived_at = Time.zone.now
+        company.restore!
+        expect(company.archived_at).to be_nil
       end
     end
   end
