@@ -28,31 +28,58 @@ describe Company do
       company.interviews.create(start_at: 5.minutes.ago) # 5分前
     end
 
-    specify '#visit_count is correct' do
-      expect(company.interviews.count).to eq 5
-      expect(company.visit_count).to eq 3
+    specify('a number of interviews is 5') { expect(company.interviews.count).to eq 5 }
+
+    describe :visit_count do
+      subject { company.visit_count }
+      it { is_expected.to eq 3 }
     end
 
-    specify '#next_interview_start_at is correct' do
-      expect(company.next_interview_start_at.to_s).to eq next_time.to_s
-      company.interviews.destroy_all
-      expect(company.next_interview_start_at).to be_nil
+    describe :next_interview_start_at do
+      subject { company.next_interview_start_at }
+
+      it { expect(subject.to_s).to eq next_time.to_s }
+
+      it 'is returns nil without interviews' do
+        company.interviews.destroy_all
+        expect(company.next_interview_start_at).to be_nil
+      end
     end
   end
 
   describe 'Scopes' do
-    let(:companies) { FactoryGirl.create_list(:company, 10) }
+    let!(:companies) { FactoryGirl.create_list(:company, 10) }
 
     describe :archived do
       subject { Company.archived }
 
       it { is_expected.to eq [] }
 
-      it do
-        companies[0].update(archived_at: Time.zone.now)
-        companies[1].update(archived_at: Time.zone.now)
-        companies[2].update(archived_at: Time.zone.now)
-        is_expected.to eq [companies[0], companies[1], companies[2]]
+      context 'Make some companies archived' do
+        before do
+          companies[0].update(archived_at: Time.zone.now)
+          companies[1].update(archived_at: Time.zone.now)
+          companies[2].update(archived_at: Time.zone.now)
+        end
+        it { is_expected.to eq [companies[0], companies[1], companies[2]] }
+      end
+    end
+
+    describe :not_archived do
+      subject { Company.not_archived }
+      it { is_expected.to eq companies }
+
+      context 'Make some companies archived' do
+        let!(:companies) { FactoryGirl.create_list(:company, 10) }
+        before do
+          Company.update_all(archived_at: Time.zone.now)
+          companies.each(&:reload)
+          companies[0].update(archived_at: nil)
+          companies[1].update(archived_at: nil)
+          companies[2].update(archived_at: nil)
+        end
+
+        it { is_expected.to eq [companies[0], companies[1], companies[2]] }
       end
     end
   end

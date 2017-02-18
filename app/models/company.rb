@@ -3,6 +3,7 @@ class Company < ApplicationRecord
   has_many :interviews
 
   scope :archived, -> { where.not(archived_at: nil) }
+  scope :not_archived, -> { where(archived_at: nil) }
 
   validates :name, presence: true
 
