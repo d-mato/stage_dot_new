@@ -12,6 +12,11 @@ nav
   = link_to 'Edit', edit_company_path(@company)
   '|
   = link_to 'Back', companies_path
+  '|
+  - if @company.archived_at?
+    = link_to 'Restore', company_archive_path(@company), method: :delete
+  - else
+    = link_to 'Archive', company_archive_path(@company), method: :post
 
 
 ul.list-inline

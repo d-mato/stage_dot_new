@@ -72,12 +72,14 @@ class CompaniesController < ApplicationController
   def archive
     if request.post?
       @company.archive!
+      msg = 'アーカイブしました'
     elsif request.delete?
       @company.restore!
+      msg = 'アーカイブからリストアしました'
     end
 
     respond_to do |format|
-      format.html { redirect_to @company }
+      format.html { redirect_to @company, flash: { success: msg } }
       format.json { render json: @company }
     end
   end
