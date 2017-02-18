@@ -19,16 +19,6 @@ describe CompaniesController, type: :controller do
     end
   end
 
-  describe 'GET #archives' do
-    before { get :archives }
-
-    it('returns 200') { expect(response.status).to eq 200 }
-
-    it '@companiesにcurrent_userに属するアーカイブされているCompanyを割り当てること' do
-      expect(assigns(:companies)).to eq archived_companies
-    end
-  end
-
   describe 'GET #show' do
     context '自分のCompany' do
       let(:company) { companies.sample }
@@ -124,6 +114,34 @@ describe CompaniesController, type: :controller do
       expect(company.good).to eq new_params[:good]
       expect(company.bad).to eq new_params[:bad]
       expect(company.motivation).to eq new_params[:motivation]
+    end
+  end
+
+  describe 'GET #archives' do
+    before { get :archives }
+
+    it('returns 200') { expect(response.status).to eq 200 }
+
+    it '@companiesにcurrent_userに属するアーカイブされているCompanyを割り当てること' do
+      expect(assigns(:companies)).to eq archived_companies
+    end
+  end
+
+  describe 'POST/DELETE #archive' do
+    describe 'POST' do
+      it 'makes company archived' do
+        company = FactoryGirl.create :company, user_id: user.id, archived_at: nil
+        post :archive, params: { company_id: company.id }
+        expect(company.reload.archived_at?).to be_truthy
+      end
+    end
+
+    describe 'DELETE' do
+      it 'makes company not archived' do
+        company = FactoryGirl.create :company, user_id: user.id, archived_at: Time.zone.now
+        delete :archive, params: { company_id: company.id }
+        expect(company.reload.archived_at?).to be_falsey
+      end
     end
   end
 end
