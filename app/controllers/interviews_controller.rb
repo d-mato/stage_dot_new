@@ -71,11 +71,11 @@ class InterviewsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_interview
-    @interview = Interview.find(params[:id])
+    @interview = current_user.interviews.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def interview_params
-    params.require(:interview).permit(:company_id, :category, :start_at, :impression)
+    params.require(:interview).permit(:category, :start_at, :impression)
   end
 end
