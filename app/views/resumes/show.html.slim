@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong User:
+  = @resume.user
+p
+  strong Body:
+  = @resume.body
+
+= link_to 'Edit', edit_resume_path(@resume)
+'|
+= link_to 'Back', resumes_path
