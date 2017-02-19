@@ -58,7 +58,7 @@ class InterviewsController < ApplicationController
   def destroy
     @interview.destroy
     respond_to do |format|
-      format.html { redirect_to [@interview.company, @interview], flash: { success: 'Interview was successfully destroyed.' } }
+      format.html { redirect_to @interview.company, flash: { success: 'Interview was successfully destroyed.' } }
       format.json { head :no_content }
     end
   end
