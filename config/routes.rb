@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :resume, only: [:show, :edit, :update]
+
   resources :companies, shallow: true do
     get :archives, on: :collection
     match :archive, via: [:post, :delete]
