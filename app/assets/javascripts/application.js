@@ -18,5 +18,7 @@
 // Rails assets
 //= require autosize
 //= require marked
+//= require moment
+//= require fullcalendar
 
 //= require_tree .

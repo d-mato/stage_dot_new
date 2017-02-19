@@ -180,7 +180,12 @@ GEM
       railties (= 5.0.1)
       sprockets-rails (>= 2.0.0)
     rails-assets-autosize (3.0.20)
+    rails-assets-fullcalendar (3.2.0)
+      rails-assets-jquery (>= 2, < 4)
+      rails-assets-moment (>= 2.9.0, < 3)
+    rails-assets-jquery (3.1.1)
     rails-assets-marked (0.3.6)
+    rails-assets-moment (2.17.1)
     rails-controller-testing (1.0.1)
       actionpack (~> 5.x)
       actionview (~> 5.x)
@@ -307,6 +312,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.1)
   rails-assets-autosize!
+  rails-assets-fullcalendar!
   rails-assets-marked!
   rails-controller-testing
   rails_admin
