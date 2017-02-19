@@ -1,12 +1,5 @@
-p#notice = notice
+h3 レジュメ
 
-p
-  strong User:
-  = @resume.user
-p
-  strong Body:
-  = @resume.body
+.markdown = @resume.body
 
-= link_to 'Edit', edit_resume_path(@resume)
-'|
-= link_to 'Back', resumes_path
+= link_to 'Edit', edit_resume_path, class: 'btn btn-default'

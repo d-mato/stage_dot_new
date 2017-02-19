@@ -1,15 +1,18 @@
-= form_for @resume do |f|
+= form_for @resume, url: resume_path do |f|
   - if @resume.errors.any?
     #error_explanation
       h2 = "#{pluralize(@resume.errors.count, "error")} prohibited this resume from being saved:"
       ul
         - @resume.errors.full_messages.each do |message|
           li = message
+  .row
+    .col-sm-6
+      = f.label :body
+      = f.text_area :body, class: 'form-control'
+    .col-sm-6.hidden-xs
+      label preview
+      .preview data-target="#resume_body"
 
-  .field
-    = f.label :user
-    = f.text_field :user
-  .field
-    = f.label :body
-    = f.text_area :body
-  .actions = f.submit
+  .actions
+    = f.submit 'submit', class: 'btn btn-primary'
+    = link_to 'back', resume_path, class: 'btn btn-default'

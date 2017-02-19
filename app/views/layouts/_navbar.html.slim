@@ -15,6 +15,8 @@ nav.navbar.navbar-default
         = link_to 'Companies', companies_path
       li class="#{:active if controller_name == 'interviews'}"
         = link_to 'Interviews', interviews_path
+      li class="#{:active if controller_name == 'resumes'}"
+        = link_to 'Resume', resume_path
 
     ul.nav.navbar-nav.navbar-right
       li = link_to('Logout', destroy_user_session_path, method: :delete) if user_signed_in?
