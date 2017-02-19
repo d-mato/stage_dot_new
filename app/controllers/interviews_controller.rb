@@ -58,7 +58,7 @@ class InterviewsController < ApplicationController
   def destroy
     @interview.destroy
     respond_to do |format|
-      format.html { redirect_to [@interview.company, @interview], flash: { success: 'Interview was successfully destroyed.' } }
+      format.html { redirect_to @interview.company, flash: { success: 'Interview was successfully destroyed.' } }
       format.json { head :no_content }
     end
   end
@@ -71,11 +71,11 @@ class InterviewsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_interview
-    @interview = Interview.find(params[:id])
+    @interview = current_user.interviews.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def interview_params
-    params.require(:interview).permit(:company_id, :category, :start_at, :impression)
+    params.require(:interview).permit(:category, :start_at, :impression)
   end
 end

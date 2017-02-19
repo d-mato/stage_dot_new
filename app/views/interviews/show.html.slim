@@ -25,3 +25,5 @@
   = link_to 'Edit', edit_interview_path(@interview)
   '|
   = link_to 'Back', company_path(@interview.company)
+
+  = link_to 'Delete', @interview, method: :delete, class: 'pull-right', data: { confirm: '削除すると元には戻せません。本当に削除してもよろしいですか？' }
