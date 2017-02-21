@@ -38,7 +38,7 @@ ul.list-inline
 - if @company.good.blank? && @company.bad.blank? && @company.motivation.blank? && @company.visit_count > 0
   .alert.alert-info
     span 面談はどうでしたか？忘れないうちに企業への印象を整理しておきましょう。
-    = link_to '編集する', edit_company_path, class: 'btn btn-default btn-xs'
+    = link_to '編集する', edit_company_path(@company), class: 'btn btn-default btn-xs'
 
 .well
   h4 interviews
