@@ -6,6 +6,10 @@ class InterviewsController < ApplicationController
   # GET /interviews
   def index
     @interviews = current_user.interviews.order(start_at: :desc)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /interviews/1
