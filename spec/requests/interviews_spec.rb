@@ -22,16 +22,22 @@ describe 'Interviews' do
       expect { JSON.parse(response.body) }.not_to raise_error
     end
 
-    specify 'jsonに含まれるinterviewの数とuserのinterviewの数が等しいこと' do
-      json = JSON.parse(response.body)
-      expect(json.size).to eq user.interviews.size
-    end
+    describe 'json' do
+      let!(:json) { JSON.parse(response.body) }
+      let!(:sorted) { user.interviews.order(start_at: :desc) }
 
-    specify 'jsonがstart_at順に並び替えられていること' do
-      sorted = user.interviews.order(start_at: :desc)
-      json = JSON.parse(response.body)
-      expect(json.first['id']).to eq sorted.first.id
-      expect(json.last['id']).to eq sorted.last.id
+      it 'jsonに含まれるinterviewの数とuserのinterviewの数が等しいこと' do
+        expect(json.size).to eq user.interviews.size
+      end
+
+      it 'jsonがstart_at順に並び替えられていること' do
+        expect(json.first['id']).to eq sorted.first.id
+        expect(json.last['id']).to eq sorted.last.id
+      end
+
+      it 'jsonに企業名が含まれていること' do
+        expect(json.first['company']).to eq sorted.first.company.name
+      end
     end
   end
 end
