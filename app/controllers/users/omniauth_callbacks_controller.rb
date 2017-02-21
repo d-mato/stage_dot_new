@@ -21,6 +21,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     profile.oauth_data = auth
     user = profile.user || User.create_with_social_profile!(profile)
+    profile.save!
 
     sign_in user
   end

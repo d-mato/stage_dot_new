@@ -9,7 +9,7 @@ class SocialProfile < ApplicationRecord
       nickname: auth['info']['nickname'],
       email: auth['info']['email'],
       image_url: auth['info']['image'],
-      raw_info: auth['extra']['raw_info']
+      raw_info: auth['extra']['raw_info'].to_json
     }
   end
 end
