@@ -42,20 +42,25 @@ ul.list-inline
 
 .well
   h4 interviews
+  - if @company.interviews.blank?
+    .alert.alert-info
+      span 面談の日程がありません。
+      = link_to '作成する', new_company_interview_path(@company), class: 'btn btn-default btn-xs'
 
-  table.table
-    thead
-      tr
-        th Start at
-        th Category
-        th Impression
-
-    tbody
-      - @company.interviews.each do |interview|
+  - if @company.interviews.present?
+    table.table.interviews
+      thead
         tr
-          td = link_to interview.start_at.to_s(:ja), interview
-          td = category_label(interview.category)
-          td
-            = link_to truncate(interview.impression, length: 60), interview
+          th Start at
+          th Category
+          th Impression
+
+      tbody
+        - @company.interviews.each do |interview|
+          tr
+            td = link_to interview.start_at.to_s(:ja), interview
+            td = category_label(interview.category)
+            td
+              = link_to truncate(interview.impression, length: 60), interview
 
   = link_to 'New Interview', new_company_interview_path(@company)

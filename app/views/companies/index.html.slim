@@ -1,22 +1,28 @@
 h3 企業リスト
 
-table.table
-  thead
-    tr
-      th 名前
-      th 訪問<br class="visible-xs">回数
-      th 予定
+- if @companies.blank?
+  .alert.alert-info
+    span 企業がありません。
+    = link_to '作成する', new_company_path, class: 'btn btn-default btn-xs'
 
-  tbody
-    - @companies.each do |company|
+- if @companies.present?
+  table.table.companies
+    thead
       tr
-        td = link_to company.name, company
-        td = company.visit_count
-        td
-          - if company.next_interview_start_at
-            span.visible-xs-inline = company.next_interview_start_at.strftime('%m/%d %H:%M')
-            span.hidden-xs = company.next_interview_start_at.to_s(:ja)
-            span.small = "(あと#{distance_of_time_in_words_to_now(company.next_interview_start_at)})"
+        th 名前
+        th 訪問<br class="visible-xs">回数
+        th 予定
+
+    tbody
+      - @companies.each do |company|
+        tr
+          td = link_to company.name, company
+          td = company.visit_count
+          td
+            - if company.next_interview_start_at
+              span.visible-xs-inline = company.next_interview_start_at.strftime('%m/%d %H:%M')
+              span.hidden-xs = company.next_interview_start_at.to_s(:ja)
+              span.small = "(あと#{distance_of_time_in_words_to_now(company.next_interview_start_at)})"
 
 = link_to 'New Company', new_company_path, class: 'btn btn-default'
 
