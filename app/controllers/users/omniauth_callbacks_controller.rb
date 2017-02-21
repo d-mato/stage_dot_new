@@ -1,7 +1,11 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  before_action :set_or_create_social_profile, only: [:github, :twitter]
+  before_action :set_or_create_social_profile, only: [:github, :google_oauth2, :twitter]
 
   def github
+    redirect_to root_path
+  end
+
+  def google_oauth2
     redirect_to root_path
   end
 

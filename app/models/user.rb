@@ -12,7 +12,7 @@ class User < ApplicationRecord
     # 登録済みのEmailの場合ランダムなEmailを生成する
     email = User.find_by(email: profile.email) ? random_email : profile.email
 
-    user = create!(name: profile.nickname, email: email)
+    user = create!(name: profile.nickname || profile.name, email: email)
     profile.update!(user_id: user.id)
     user
   end

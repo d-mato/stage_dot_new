@@ -4,10 +4,16 @@ body.static_pages.index {
   .login-buttons {
     .btn {
       transition: all 0.5s;
+      width: 230px;
+      margin-bottom: 5px;
     }
     .github {
       background-color: #303030;
       &:hover { background-color: #383838; }
+    }
+    .google {
+      background-color: #db4a39;
+      &:hover { background-color: #e35241; }
     }
     .twitter {
       background-color: #1da1f3;

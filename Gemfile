@@ -60,6 +60,7 @@ gem 'sqlite3', group: [:development, :test]
 
 gem 'devise'
 gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 
 gem 'rails_admin'
