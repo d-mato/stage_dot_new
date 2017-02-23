@@ -6,7 +6,8 @@ EventColor = {
 document.addEventListener "turbolinks:load", ->
   return unless document.querySelector('#calendar')
 
-  $('#calendar').fullCalendar
+  # .htmlで中身を空にしないとturbolinks環境でページを戻る度にカレンダーが増えていく
+  $('#calendar').html('').fullCalendar
     timeFormat: 'H:mm'
 
   $.get '/interviews.json', (json) ->
