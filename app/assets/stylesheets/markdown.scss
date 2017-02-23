@@ -2,9 +2,8 @@
   font-family: Helvetica, arial, sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding: 30px;
+  padding: 20px;
+  @media screen and (max-width: 768px) { padding: 0; }
   color: #EBEBEB;
 
   & > *:first-child {
@@ -83,14 +82,13 @@
   font-size: 14px; }
 
   p, blockquote, ul, ol, dl, li, table, pre {
-  margin: 15px 0; }
+  margin: 5px 0; }
 
   hr {
-    background: transparent url("../../images/modules/pulls/dirty-shade.png") repeat-x 0 0;
-    border: 0 none;
-    // color: #cccccc;
-    height: 4px;
-  padding: 0; }
+    background: #888;
+    border: none;
+    height: 0.15em;
+  }
 
   body > h2:first-child {
     margin-top: 0;

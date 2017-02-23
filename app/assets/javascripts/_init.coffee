@@ -1,8 +1,11 @@
+marked.setOptions
+  breaks: true
+
 document.addEventListener "turbolinks:load", ->
   # marked
   $('.markdown').each ->
     $el = $(@)
-    $el.html marked($el.html())
+    $el.html marked($el.html().replace(/&gt;/g, '>'))
 
   # autosize
   autosize document.querySelectorAll('textarea')
