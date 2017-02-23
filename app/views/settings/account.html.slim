@@ -1,0 +1,17 @@
+h1 Account
+
+.errors
+  - current_user.errors.full_messages.each do |msg|
+    .alert.alert-danger = msg
+
+= form_tag settings_account_path, method: :put do
+  .row
+    .col-sm-3
+      = label_tag :name, '名前'
+      = text_field_tag :name, current_user.name, class: 'form-control'
+    .col-sm-3
+      = label_tag :email, 'Email'
+      = email_field_tag :email, current_user.email, class: 'form-control'
+
+  = submit_tag 'Update', class: 'btn btn-primary'
+

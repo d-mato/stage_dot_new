@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resource :contact, only: [:show, :create]
 
+  match 'settings/account', via: [:get, :put]
+
   authenticated :user do
     root 'home#index'
   end
