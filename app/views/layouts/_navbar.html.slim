@@ -19,4 +19,5 @@ nav.navbar.navbar-default
         = link_to 'Resume', resume_path
 
     ul.nav.navbar-nav.navbar-right
+      /li = link_to(current_user.name, 
       li = link_to('Logout', destroy_user_session_path, method: :delete) if user_signed_in?
