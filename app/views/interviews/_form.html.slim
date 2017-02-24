@@ -9,7 +9,7 @@
   .row
     .col-md-3.col-sm-6
       = f.label :category
-      = f.select :category, %w(カジュアル面談 面接), {}, class: 'form-control'
+      = f.select :category, Interview::CATEGORIES, {}, class: 'form-control'
     .col-md-4.col-sm-6
       = f.label :start_at
       = f.datetime_field :start_at, class: 'form-control'
