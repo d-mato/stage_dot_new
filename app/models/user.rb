@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_many :social_profiles, dependent: :destroy
   has_many :companies, dependent: :destroy
   has_many :interviews, through: :companies
+  # 受けた友達リクエスト
+  has_many :received_friendships, foreign_key: :friend_id, class_name: 'Friendship'
+  # 自身が送った友達リクエスト
   has_many :friendships
   has_many :accepted_friendships, -> { accepted }, class_name: 'Friendship'
   has_many :friends, through: :accepted_friendships, class_name: 'User'
@@ -20,6 +23,10 @@ class User < ApplicationRecord
     user = create!(name: profile.nickname || profile.name, email: email)
     profile.update!(user_id: user.id)
     user
+  end
+
+  def friend?(user)
+    friends.include? user
   end
 
   private

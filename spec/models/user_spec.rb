@@ -33,4 +33,19 @@ describe User do
       end
     end
   end
+
+  describe 'Methods' do
+    describe :friend? do
+      let(:alice) { FactoryGirl.create :user }
+      let(:bob) { FactoryGirl.create :user }
+      subject { alice.friend? bob }
+
+      it { is_expected.to be false }
+      it do
+        alice.friendships.create(friend_id: bob.id)
+        bob.received_friendships.last.accept!
+        is_expected.to be true
+      end
+    end
+  end
 end
