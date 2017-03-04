@@ -9,16 +9,18 @@ nav.navbar.navbar-default
 
   .navbar-collapse.collapse#navbar
     ul.nav.navbar-nav
-      li class="#{:active if controller_name == 'home'}"
+      li class="#{:active if controller_path == 'home'}"
         = link_to 'Home', root_path
-      li class="#{:active if controller_name == 'companies'}"
+      li class="#{:active if controller_path == 'companies'}"
         = link_to 'Companies', companies_path
-      li class="#{:active if controller_name == 'interviews'}"
+      li class="#{:active if controller_path == 'interviews'}"
         = link_to 'Interviews', interviews_path
-      li class="#{:active if controller_name == 'resumes'}"
+      li class="#{:active if controller_path == 'resumes'}"
         = link_to 'Resume', resume_path
+      li class="#{:active if controller_path.match /^users/ }"
+        = link_to 'Users', users_path
 
     ul.nav.navbar-nav.navbar-right
-      li class="#{:active if controller_name == 'settings'}"
+      li class="#{:active if controller_path == 'settings'}"
         = link_to('account', settings_account_path)
       li = link_to('Logout', destroy_user_session_path, method: :delete) if user_signed_in?
