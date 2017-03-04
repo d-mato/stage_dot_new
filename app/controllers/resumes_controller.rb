@@ -29,7 +29,7 @@ class ResumesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_resume
-    @resume = current_user.resume || Resume.create(user_id: current_user.id)
+    @resume = current_user.resume
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

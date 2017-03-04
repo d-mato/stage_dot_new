@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
+  after_create :create_resume
+
   def self.create_with_social_profile!(profile)
     # 登録済みのEmailの場合ランダムなEmailを生成する
     email = User.find_by(email: profile.email) ? random_email : profile.email
@@ -15,6 +17,12 @@ class User < ApplicationRecord
     user = create!(name: profile.nickname || profile.name, email: email)
     profile.update!(user_id: user.id)
     user
+  end
+
+  private
+
+  def create_resume
+    Resume.create!(user_id: id)
   end
 end
 
