@@ -14,7 +14,7 @@ h3 Interviews
 table.table
   thead
   tbody
-    - @user.interviews.each do |interview|
+    - @user.interviews.order(start_at: :desc).each do |interview|
       tr
         td = link_to interview.company.name, [@user, interview.company]
         td = link_to interview.start_at.to_s(:ja), [@user, interview]
