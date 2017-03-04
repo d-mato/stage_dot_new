@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_many :social_profiles, dependent: :destroy
   has_many :companies, dependent: :destroy
   has_many :interviews, through: :companies
+  has_many :friendships
+  has_many :accepted_friendships, -> { accepted }, class_name: 'Friendship'
+  has_many :friends, through: :accepted_friendships, class_name: 'User'
   has_one :resume
 
   validates :email, uniqueness: true
