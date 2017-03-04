@@ -19,4 +19,4 @@ table.table
         td = link_to interview.company.name, [@user, interview.company]
         td = link_to interview.start_at.to_s(:ja), [@user, interview]
         td = category_label(interview.category)
-        td = truncate(interview.impression, length: 60)
+        td = link_to truncate(interview.impression, length: 60), [@user, interview]
