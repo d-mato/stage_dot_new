@@ -1,0 +1,22 @@
+- content_for :breadcrumb
+  ul.breadcrumb
+    li = link_to :users, users_path
+    li = @user.name
+
+h1 = @user.name
+
+h3 Resume
+.well
+  .markdown = @user.resume.body
+
+h3 Interviews
+
+table.table
+  thead
+  tbody
+    - @user.interviews.each do |interview|
+      tr
+        td = link_to interview.company.name, [@user, interview.company]
+        td = link_to interview.start_at.to_s(:ja), [@user, interview]
+        td = category_label(interview.category)
+        td = truncate(interview.impression, length: 60)

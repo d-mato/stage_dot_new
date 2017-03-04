@@ -1,0 +1,24 @@
+- content_for :breadcrumb
+  ul.breadcrumb
+    li = link_to :users, users_path
+    li = link_to @user.name, @user
+    li = link_to @interview.company.name, [@user, @interview.company]
+    li = "interviews##{@interview.id}"
+
+.well
+  h3 面談内容
+  p
+    strong Company:
+    = link_to @interview.company.name, [@user, @interview.company]
+
+  p
+    strong Category:
+    = category_label(@interview.category)
+
+  p
+    strong Start at:
+    = @interview.start_at
+
+  p
+    strong Impression:
+    .markdown = @interview.impression
