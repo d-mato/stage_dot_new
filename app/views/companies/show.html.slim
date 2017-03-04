@@ -19,21 +19,7 @@ nav
     = link_to 'Archive', company_archive_path(@company), method: :post
 
 
-ul.list-inline
-  li 社員数 #{@company.employee_count}
-  li エンジニア人数 #{@company.engineer_count}
-
-- if @company.good.present?
-  label Good!!
-  .markdown = @company.good
-
-- if @company.bad.present?
-  label Bad...
-  .markdown = @company.bad
-
-- if @company.motivation.present?
-  label Motivation
-  .markdown = @company.motivation
+= render 'company_meta', company: @company
 
 - if @company.good.blank? && @company.bad.blank? && @company.motivation.blank? && @company.visit_count > 0
   .alert.alert-info

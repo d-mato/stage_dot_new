@@ -1,0 +1,16 @@
+ul.list-inline
+  li 社員数 #{company.employee_count}
+  li エンジニア人数 #{company.engineer_count}
+
+- if company.good.present?
+  strong Good!!
+  .markdown = company.good
+
+- if company.bad.present?
+  strong Bad...
+  .markdown = company.bad
+
+- if company.motivation.present?
+  strong Motivation
+  .markdown = company.motivation
+

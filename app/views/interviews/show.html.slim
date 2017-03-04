@@ -4,26 +4,10 @@
     li = link_to @interview.company.name, @interview.company
     li = "interviews##{@interview.id}"
 
-.well
-  h3 面談内容
-  p
-    strong Company:
-    = link_to @interview.company.name, @interview.company
+= render 'interview', interview: @interview
 
-  p
-    strong Category:
-    = category_label(@interview.category)
+= link_to 'Edit', edit_interview_path(@interview)
+'|
+= link_to 'Back', company_path(@interview.company)
 
-  p
-    strong Start at:
-    = @interview.start_at
-
-  p
-    strong Impression:
-    .markdown = @interview.impression
-
-  = link_to 'Edit', edit_interview_path(@interview)
-  '|
-  = link_to 'Back', company_path(@interview.company)
-
-  = link_to 'Delete', @interview, method: :delete, class: 'pull-right', data: { confirm: '削除すると元には戻せません。本当に削除してもよろしいですか？' }
+= link_to 'Delete', @interview, method: :delete, class: 'pull-right', data: { confirm: '削除すると元には戻せません。本当に削除してもよろしいですか？' }
