@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 20170304091327) do
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "interviews", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "category"
