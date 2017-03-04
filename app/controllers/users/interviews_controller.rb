@@ -4,6 +4,7 @@ class Users::InterviewsController < ApplicationController
   # GET /users/:user_id/interviews/1
   def show
     @user = User.find(params[:user_id])
+    authenticate_friend! @user
     @interview = Interview.find(params[:id])
   end
 end

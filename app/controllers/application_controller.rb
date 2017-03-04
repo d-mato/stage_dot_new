@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
   def sign_in_for_dev
     sign_in User.find(params[:sign_in_user_id])
   end
+
+  # 引数のUserが友達、もしくは自身でなければリダイレクト
+  def authenticate_friend!(user)
+    return true if current_user == user || current_user.friend?(user)
+    redirect_to root_path, flash: { warning: '友達でないユーザーのページは表示できません' }
+  end
 end

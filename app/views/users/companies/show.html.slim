@@ -4,26 +4,14 @@
     li = link_to @user.name, @user
     li = @company.name
 
+= render 'users/user_header', user: @user
+
 h3
   = @company.name
   - if @company.via.present?
     small = "(#{@company.via}経由)"
 
-ul.list-inline
-  li 社員数 #{@company.employee_count}
-  li エンジニア人数 #{@company.engineer_count}
-
-- if @company.good.present?
-  label Good!!
-  .markdown = @company.good
-
-- if @company.bad.present?
-  label Bad...
-  .markdown = @company.bad
-
-- if @company.motivation.present?
-  label Motivation
-  .markdown = @company.motivation
+= render 'companies/company_meta', company: @company
 
 .well
   h4 interviews

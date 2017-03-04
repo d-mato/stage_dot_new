@@ -3,7 +3,7 @@
     li = link_to :users, users_path
     li = @user.name
 
-h1 = @user.name
+= render 'users/user_header', user: @user
 
 h3 Resume
 .well

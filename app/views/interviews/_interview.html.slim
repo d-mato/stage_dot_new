@@ -1,0 +1,14 @@
+p = category_label(interview.category)
+h3
+  = link_to(interview.company.name, interview.company)
+  |の面談
+
+p
+  strong Start at:
+  = interview.start_at.to_s(:ja)
+
+p
+  strong Impression:
+  .markdown = interview.impression
+
+

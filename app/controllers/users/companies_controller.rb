@@ -4,6 +4,7 @@ class Users::CompaniesController < ApplicationController
   # GET /users/:user_id/companies/1
   def show
     @user = User.find(params[:user_id])
+    authenticate_friend! @user
     @company = Company.find(params[:id])
   end
 end
