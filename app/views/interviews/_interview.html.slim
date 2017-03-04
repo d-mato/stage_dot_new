@@ -1,7 +1,5 @@
 p = category_label(interview.category)
-h3
-  = link_to(interview.company.name, interview.company)
-  |の面談
+h3 = "#{interview.company.name}の面談"
 
 p
   strong Start at:

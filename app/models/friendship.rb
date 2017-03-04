@@ -13,6 +13,6 @@ class Friendship < ApplicationRecord
   end
 
   def pair
-    Friendship.find_or_initialize_by(user_id: friend_id, friend_id: id)
+    Friendship.find_or_initialize_by(user_id: friend_id, friend_id: user_id)
   end
 end
