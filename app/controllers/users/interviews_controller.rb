@@ -5,6 +5,6 @@ class Users::InterviewsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     authenticate_friend! @user
-    @interview = Interview.find(params[:id])
+    @interview = @user.interviews.find(params[:id])
   end
 end

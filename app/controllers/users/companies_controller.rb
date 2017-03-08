@@ -5,6 +5,6 @@ class Users::CompaniesController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     authenticate_friend! @user
-    @company = Company.find(params[:id])
+    @company = @user.companies.find(params[:id])
   end
 end
