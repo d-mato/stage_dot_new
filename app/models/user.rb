@@ -12,17 +12,15 @@ class User < ApplicationRecord
   has_many :friends, through: :accepted_friendships, class_name: 'User'
   has_one :resume
 
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true, presence: true
 
   after_create :create_resume
 
+  # SocialProfileからUserを新規作成する
+  # 作成に失敗したらnilを返す
   def self.create_with_social_profile!(profile)
-    # 登録済みのEmailの場合ランダムなEmailを生成する
-    email = User.find_by(email: profile.email) ? random_email : profile.email
-
-    user = create!(name: profile.nickname || profile.name, email: email)
-    profile.update!(user_id: user.id)
-    user
+    user = new(name: profile.nickname || profile.name, email: profile.email)
+    user.save ? user : nil
   end
 
   def friend?(user)
@@ -34,8 +32,4 @@ class User < ApplicationRecord
   def create_resume
     Resume.create!(user_id: id)
   end
-end
-
-def random_email
-  "#{SecureRandom.hex}@email.com"
 end
