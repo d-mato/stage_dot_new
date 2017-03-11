@@ -16,6 +16,8 @@ describe Company do
     expect(company.errors.size).to eq 0
   end
 
+  it { expect(company).to have_many(:interviews).dependent(:destroy) }
+
   describe 'Methods' do
     let(:company) { Company.create(user_id: user.id, name: 'Gooogle') }
     let(:next_time) { 4.hours.since } # 4時間後

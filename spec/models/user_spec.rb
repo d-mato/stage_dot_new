@@ -12,6 +12,12 @@ describe User do
   end
 
   describe 'Associations' do
+    subject { user }
+
+    it { is_expected.to have_many(:companies).dependent(:destroy) }
+    it { is_expected.to have_many(:friendships).dependent(:destroy) }
+    it { is_expected.to have_one(:resume).dependent(:destroy) }
+
     describe :friendships do
       let!(:friend) { FactoryGirl.create :user }
       let!(:friendship) { user.friendships.create!(friend_id: friend.id) }

@@ -7,10 +7,10 @@ class User < ApplicationRecord
   # 受けた友達リクエスト
   has_many :received_friendships, foreign_key: :friend_id, class_name: 'Friendship'
   # 自身が送った友達リクエスト
-  has_many :friendships
+  has_many :friendships, dependent: :destroy
   has_many :accepted_friendships, -> { accepted }, class_name: 'Friendship'
   has_many :friends, through: :accepted_friendships, class_name: 'User'
-  has_one :resume
+  has_one :resume, dependent: :destroy
 
   validates :email, uniqueness: true, presence: true
 
