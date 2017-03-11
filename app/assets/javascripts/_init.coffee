@@ -13,5 +13,5 @@ document.addEventListener "turbolinks:load", ->
   # fade out flash messages
   ( ->
     if flash = document.querySelector('#flash_messages')
-      setTimeout (-> flash.classList.toggle 'fade'), 3000
+      setTimeout (-> flash.classList.toggle 'fade'), 5000
   )()
