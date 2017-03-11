@@ -4,7 +4,7 @@ EventColor = {
   '面接': '#DF691A'
 }
 
-document.addEventListener "turbolinks:load", ->
+document.addEventListener "DOMContentLoaded", ->
   return unless document.querySelector('#calendar')
 
   # .htmlで中身を空にしないとturbolinks環境でページを戻る度にカレンダーが増えていく

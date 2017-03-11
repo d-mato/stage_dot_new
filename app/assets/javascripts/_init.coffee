@@ -1,7 +1,7 @@
 marked.setOptions
   breaks: true
 
-document.addEventListener "turbolinks:load", ->
+document.addEventListener "DOMContentLoaded", ->
   # marked
   $('.markdown').each ->
     $el = $(@)

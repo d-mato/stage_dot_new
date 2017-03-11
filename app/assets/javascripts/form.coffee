@@ -1,4 +1,4 @@
-document.addEventListener "turbolinks:load", ->
+document.addEventListener "DOMContentLoaded", ->
   $('textarea').each ->
     $textarea = $(@)
     $preview = $(".preview[data-target='##{$textarea.attr('id')}']")
