@@ -52,17 +52,25 @@ describe User do
   describe 'ClassMethods' do
     describe '.create_with_social_profile' do
       let(:social_profile) { FactoryGirl.create :social_profile }
-      it 'SocialProfileインスタンスからユーザーを作成できること' do
+
+      it 'SocialProfileインスタンスからUserを作成できること' do
         user = User.create_with_social_profile!(social_profile)
         expect(user.persisted?).to be true
         expect(user.email).to eq social_profile.email
       end
 
+      it 'SocialProfileインスタンスがUserと紐付いていること' do
+        user = User.create_with_social_profile!(social_profile)
+        expect(social_profile.reload.user).to eq user
+      end
+
       describe 'User#name定義におけるSocialProfileの#nicknameと#nameの優先順位' do
         let(:user) { User.create_with_social_profile!(social_profile) }
+
         it 'SocialProfile#nicknameが優先されてUser#nameになる' do
           expect(user.name).to eq social_profile.nickname
         end
+
         it 'SocialProfile#nicknameが空ならSocialProfile#nameがUser#nameになる' do
           social_profile.nickname = nil
           expect(user.name).to eq social_profile.name

@@ -1,7 +1,8 @@
 class SocialProfile < ApplicationRecord
   belongs_to :user, required: false
 
-  validates :uid, uniqueness: { scope: :provider }
+  validates :provider, presence: true
+  validates :uid, presence: true, uniqueness: { scope: :provider }
 
   def oauth_data=(auth)
     self.attributes = {

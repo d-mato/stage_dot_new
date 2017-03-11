@@ -16,10 +16,11 @@ class User < ApplicationRecord
 
   after_create :create_resume
 
-  # SocialProfileからUserを新規作成する
+  # 与えられたSocialProfileからUserを新規作成し、関連付けを行う
   # 作成に失敗したらnilを返す
   def self.create_with_social_profile!(profile)
     user = new(name: profile.nickname || profile.name, email: profile.email)
+    user.social_profiles << profile
     user.save ? user : nil
   end
 

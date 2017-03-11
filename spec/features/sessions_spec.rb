@@ -2,27 +2,10 @@ require 'rails_helper'
 
 RSpec.feature 'Sessions' do
   describe 'OmniAuthによるログイン' do
-    let(:uid) { '1234' }
-    let(:provider) { 'github' }
-    let(:nickname) { 'john' }
-    let(:email) { 'john@example.com' }
-    let(:profile) { SocialProfile.find_by(provider: provider, uid: uid) }
     before { sign_in_via_github }
 
-    specify 'Githubでログイン' do
+    specify 'Githubでログイン(初回)' do
       expect(page).to have_content 'Logout'
-    end
-
-    specify 'UserProfileが登録されていること' do
-      expect(profile).not_to be_nil
-      expect(profile.email).to eq email
-      expect(profile.nickname).to eq nickname
-    end
-
-    specify 'Userが登録されていること' do
-      expect(profile.user).not_to be_nil
-      expect(profile.user.email).to eq email
-      expect(profile.user.name).to eq nickname
     end
 
     specify 'ログアウト' do
@@ -30,12 +13,18 @@ RSpec.feature 'Sessions' do
       expect(page).to have_content '転職活動をもっとスマートに'
     end
 
+    specify 'ログアウトしてからの再ログイン' do
+      click_link 'Logout'
+      sign_in_via_github
+      expect(page).to have_content 'Logout'
+    end
+
     def sign_in_via_github
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
-        provider: provider,
-        uid: uid,
-        info: { nickname: nickname, email: email },
+        provider: 'github',
+        uid: '1234',
+        info: { nickname: Faker::Name.name, email: Faker::Internet.email },
         extra: {}
       )
       visit '/'
