@@ -1,9 +1,9 @@
 document.addEventListener "DOMContentLoaded", ->
-  $('textarea').each ->
-    $textarea = $(@)
-    $preview = $(".preview[data-target='##{$textarea.attr('id')}']")
-    return true if $preview.length == 0
+  # Markdown preview
+  document.querySelectorAll('textarea').forEach (textarea) ->
+    preview = document.querySelector(".preview[data-target='##{textarea.id}']")
+    return true unless preview
 
-    $preview.html marked($textarea.val())
-    $textarea.on 'keyup', ->
-      $preview.html marked($textarea.val())
+    preview.innerHTML = marked(textarea.value)
+    textarea.addEventListener 'keyup', ->
+      preview.innerHTML = marked(textarea.value)

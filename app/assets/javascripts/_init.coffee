@@ -3,9 +3,8 @@ marked.setOptions
 
 document.addEventListener "DOMContentLoaded", ->
   # marked
-  $('.markdown').each ->
-    $el = $(@)
-    $el.html marked($el.html().replace(/&gt;/g, '>'))
+  document.querySelectorAll('.markdown').forEach (el) ->
+    el.innerHTML = marked(el.innerHTML.replace(/&gt;/g, '>'))
 
   # autosize
   autosize document.querySelectorAll('textarea')
