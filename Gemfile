@@ -59,6 +59,7 @@ gem 'pg', group: :production
 gem 'sqlite3', group: [:development, :test]
 
 gem 'devise'
+gem 'dotenv-rails'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
