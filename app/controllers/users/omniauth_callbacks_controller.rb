@@ -21,6 +21,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     profile.oauth_data = auth
     profile.save!
 
+    # ログイン中ならログインしているUserにSocialProfileを関連付けてreturn
+    if signed_in?
+      profile.update(user_id: current_user.id)
+      return
+    end
+
     user = profile.user || User.create_with_social_profile!(profile)
 
     # Userの作成に失敗
