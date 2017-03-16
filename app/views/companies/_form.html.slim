@@ -21,6 +21,14 @@
       = f.number_field :engineer_count, class: 'form-control'
   .row
     .col-sm-6
+      = f.label :notes
+      a.fa.fa-question-circle[data-toggle="tooltip" title="事業内容や企業のサイトURL等をまとめておきましょう"]
+      = f.text_area :notes, class: 'form-control'
+    .col-sm-6.hidden-xs
+      label preview
+      .preview data-target="#company_notes"
+  .row
+    .col-sm-6
       = f.label :good
       a.fa.fa-question-circle[data-toggle="tooltip" title="あなたが企業に対して抱いた「良い印象」"]
       = f.text_area :good, class: 'form-control'
