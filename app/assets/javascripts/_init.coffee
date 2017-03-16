@@ -14,3 +14,5 @@ document.addEventListener "DOMContentLoaded", ->
     if flash = document.querySelector('#flash_messages')
       setTimeout (-> flash.classList.toggle 'fade'), 5000
   )()
+
+  $('[data-toggle="tooltip"]').tooltip()

@@ -22,6 +22,7 @@
   .row
     .col-sm-6
       = f.label :good
+      a.fa.fa-question-circle[data-toggle="tooltip" title="あなたが企業に対して抱いた「良い印象」"]
       = f.text_area :good, class: 'form-control'
     .col-sm-6.hidden-xs
       label preview
@@ -29,6 +30,7 @@
   .row
     .col-sm-6
       = f.label :bad
+      a.fa.fa-question-circle[data-toggle="tooltip" title="あなたが企業に対して抱いた「悪い印象」"]
       = f.text_area :bad, class: 'form-control'
     .col-sm-6.hidden-xs
       label preview
@@ -36,6 +38,7 @@
   .row
     .col-sm-6
       = f.label :motivation
+      a.fa.fa-question-circle[data-toggle="tooltip" title="面接時に伝えたい「志望動機」"]
       = f.text_area :motivation, class: 'form-control'
     .col-sm-6.hidden-xs
       label preview
