@@ -7,4 +7,13 @@ class Interview < ApplicationRecord
   scope :finished, -> { where('start_at < ?', Time.zone.now).order(start_at: :asc) }
 
   validates :start_at, presence: true
+
+  def google_calendar_url
+    title = "#{company.name} #{category}"
+    details = ''
+    location = ''
+    format = '%Y%m%dT%H%M00'
+    dates = "#{start_at.strftime(format)}/#{start_at.since(1.hour).strftime(format)}"
+    "https://www.google.com/calendar/event?action=TEMPLATE&text=#{URI.escape(title)}&details=#{URI.escape(details)}&location=#{location}&dates=#{dates}"
+  end
 end

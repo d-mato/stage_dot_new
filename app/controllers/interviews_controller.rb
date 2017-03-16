@@ -15,11 +15,6 @@ class InterviewsController < ApplicationController
   # GET /interviews/1
   # GET /interviews/1.json
   def show
-    title = "#{@interview.company.name} #{@interview.category}"
-    detail = ''
-    format = '%Y%m%dT%H%M00'
-    dates = "#{@interview.start_at.strftime(format)}/#{@interview.start_at.since(1.hour).strftime(format)}"
-    @calendar_url = "https://www.google.com/calendar/event?action=TEMPLATE&text=#{URI.escape(title)}&details=#{URI.escape(detail)}&dates=#{dates}"
   end
 
   # GET /companies/:company_id/interviews/new

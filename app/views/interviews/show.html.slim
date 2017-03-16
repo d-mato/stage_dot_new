@@ -8,6 +8,6 @@
 
 .actions
   = link_to 'Edit', edit_interview_path(@interview)
-  = link_to 'Googleカレンダーに追加', @calendar_url, target: '_blank'
+  = link_to 'Googleカレンダーに追加', @interview.google_calendar_url, target: '_blank'
 
   = link_to 'Delete', @interview, method: :delete, class: 'pull-right', data: { confirm: '削除すると元には戻せません。本当に削除してもよろしいですか？' }
