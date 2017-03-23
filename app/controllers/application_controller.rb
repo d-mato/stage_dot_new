@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :sign_in_for_dev, if: -> { Rails.env.development? && params[:sign_in_user_id] }
+  before_action :set_paper_trail_whodunnit
 
   private
 

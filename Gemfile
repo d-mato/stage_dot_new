@@ -58,6 +58,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pg', group: :production
 gem 'sqlite3', group: [:development, :test]
 
+gem 'paper_trail'
+
 gem 'devise'
 gem 'dotenv-rails'
 gem 'omniauth-github'

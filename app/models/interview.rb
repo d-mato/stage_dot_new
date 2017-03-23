@@ -8,6 +8,8 @@ class Interview < ApplicationRecord
 
   validates :start_at, presence: true
 
+  has_paper_trail
+
   def google_calendar_url
     title = "#{company.name} #{category}"
     details = ''

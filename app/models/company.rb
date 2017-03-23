@@ -7,6 +7,8 @@ class Company < ApplicationRecord
 
   validates :name, presence: true
 
+  has_paper_trail
+
   def archive!
     update(archived_at: Time.zone.now)
   end
