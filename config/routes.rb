@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :interviews, only: [:show], controller: 'users/interviews'
   end
 
+  resources :feeds, only: [:index]
+
   authenticated :user do
     root 'home#index'
   end

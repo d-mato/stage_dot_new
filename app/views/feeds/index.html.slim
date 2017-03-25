@@ -1,0 +1,4 @@
+dl
+- @feeds.each do |feed|
+  dt = feed.created_at.to_s(:ja)
+  dd = "#{feed.user.name}さんが#{feed.target_string}を更新しました"
