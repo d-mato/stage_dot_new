@@ -66,6 +66,8 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 
+gem 'active_decorator'
+
 gem 'rails_admin'
 
 gem 'pry-rails'
