@@ -80,6 +80,6 @@ class InterviewsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def interview_params
-    params.require(:interview).permit(:category, :start_at, :impression)
+    params.require(:interview).permit(:category, :start_at, :impression, :location)
   end
 end

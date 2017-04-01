@@ -16,6 +16,11 @@
 
   .row
     .col-sm-6
+      = f.label :location
+      = f.text_area :location, class: 'form-control'
+
+  .row
+    .col-sm-6
       = f.label :impression
       = f.text_area :impression, class: 'form-control'
     .col-sm-6.hidden-xs
