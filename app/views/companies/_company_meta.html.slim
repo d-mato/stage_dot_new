@@ -1,20 +1,26 @@
 ul.list-inline
+  li
+    span.glyphicon.glyphicon-user
   li 社員数 #{company.employee_count}
   li エンジニア人数 #{company.engineer_count}
 
 - if company.notes.present?
+  span.glyphicon.glyphicon-pencil<>
   strong Notes
   .markdown = company.notes
 
 - if company.good.present?
+  span.glyphicon.glyphicon-thumbs-up<>
   strong Good!!
   .markdown = company.good
 
 - if company.bad.present?
+  span.glyphicon.glyphicon-thumbs-down<>
   strong Bad...
   .markdown = company.bad
 
 - if company.motivation.present?
+  span.glyphicon.glyphicon-star<>
   strong Motivation
   .markdown = company.motivation
 

@@ -2,15 +2,14 @@ p = category_label(interview.category)
 h3 = "#{interview.company.name}の面談"
 
 p
-  strong Start at:
-  = interview.start_at.to_s(:ja)
+  span.glyphicon.glyphicon-time<>
+  span = interview.start_at.to_s(:ja)
 
 p
-  strong Location:
-  = interview.location
+  span.glyphicon.glyphicon-map-marker<>
+  span = interview.location
 
 p
-  strong Impression:
+  span.glyphicon.glyphicon-star-empty<>
+  strong Impression
   .markdown = interview.impression
-
-
