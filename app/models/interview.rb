@@ -16,6 +16,6 @@ class Interview < ApplicationRecord
     details = ''
     format = '%Y%m%dT%H%M00'
     dates = "#{start_at.strftime(format)}/#{start_at.since(1.hour).strftime(format)}"
-    "https://www.google.com/calendar/event?action=TEMPLATE&text=#{URI.escape(title)}&details=#{URI.escape(details)}&location=#{URI.escape(location)}&dates=#{dates}"
+    "https://www.google.com/calendar/event?action=TEMPLATE&text=#{URI.escape(title)}&details=#{URI.escape(details)}&location=#{URI.escape(location.to_s)}&dates=#{dates}"
   end
 end
