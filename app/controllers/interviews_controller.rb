@@ -19,7 +19,8 @@ class InterviewsController < ApplicationController
 
   # GET /companies/:company_id/interviews/new
   def new
-    @interview = Interview.new
+    @interview = Interview.new(company: @company)
+    @interview.copy_location
   end
 
   # GET /interviews/1/edit

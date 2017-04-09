@@ -18,4 +18,8 @@ class Interview < ApplicationRecord
     dates = "#{start_at.strftime(format)}/#{start_at.since(1.hour).strftime(format)}"
     "https://www.google.com/calendar/event?action=TEMPLATE&text=#{URI.escape(title)}&details=#{URI.escape(details)}&location=#{URI.escape(location.to_s)}&dates=#{dates}"
   end
+
+  def copy_location
+    self.location = company.interviews.last.location
+  end
 end
