@@ -20,6 +20,8 @@ class Interview < ApplicationRecord
   end
 
   def copy_location
-    self.location = company.interviews.last.location
+    if company && company.interviews.last
+      self.location = company.interviews.last.location
+    end
   end
 end

@@ -14,5 +14,15 @@ describe Interview do
       interview2.copy_location
       expect(interview2.location).to eq interview1.location
     end
+
+    it 'company_idが空でもエラーを起こさないこと' do
+      interview = Interview.new
+      expect { interview.copy_location }.not_to raise_error
+    end
+
+    it '直近の面談が無くてもエラーを起こさないこと' do
+      interview = Interview.new(company_id: FactoryGirl.create(:company).id)
+      expect { interview.copy_location }.not_to raise_error
+    end
   end
 end
