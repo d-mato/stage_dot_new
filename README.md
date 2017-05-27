@@ -1,24 +1,5 @@
-# README
+# Stage.new
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+転職活動を「見える化」し、次のステージへ「スマートに」飛び立つためのWebアプリケーションです。
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+https://stage-new.herokuapp.com
