@@ -57,7 +57,7 @@ gem 'erubis'
 
 ########################################
 
-gem 'pg'
+gem 'pg', '< 1.0'
 
 gem 'paper_trail'
 

@@ -190,7 +190,7 @@ GEM
     paper_trail (6.0.2)
       activerecord (>= 4.0, < 5.2)
       request_store (~> 1.1)
-    pg (1.2.3)
+    pg (0.21.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -355,7 +355,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-twitter
   paper_trail
-  pg
+  pg (< 1.0)
   pry-rails
   puma (~> 3.0)
   rails (~> 5.1.0.rc1)
