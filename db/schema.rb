@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20170401092006) do
 
-  create_table "companies", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "companies", id: :serial, force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170401092006) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
-  create_table "contacts", force: :cascade do |t|
+  create_table "contacts", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.text "text"
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170401092006) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "friendships", force: :cascade do |t|
+  create_table "friendships", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
     t.datetime "accepted_at"
@@ -47,7 +50,7 @@ ActiveRecord::Schema.define(version: 20170401092006) do
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
-  create_table "interviews", force: :cascade do |t|
+  create_table "interviews", id: :serial, force: :cascade do |t|
     t.integer "company_id"
     t.string "category"
     t.datetime "start_at"
@@ -58,7 +61,7 @@ ActiveRecord::Schema.define(version: 20170401092006) do
     t.index ["company_id"], name: "index_interviews_on_company_id"
   end
 
-  create_table "resumes", force: :cascade do |t|
+  create_table "resumes", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.text "body"
     t.datetime "created_at", null: false
@@ -66,7 +69,7 @@ ActiveRecord::Schema.define(version: 20170401092006) do
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
-  create_table "social_profiles", force: :cascade do |t|
+  create_table "social_profiles", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.string "provider"
     t.string "uid"
@@ -81,7 +84,7 @@ ActiveRecord::Schema.define(version: 20170401092006) do
     t.index ["user_id"], name: "index_social_profiles_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.string "name"
     t.boolean "email_verified", default: false, null: false
     t.string "email", default: "", null: false
@@ -104,9 +107,13 @@ ActiveRecord::Schema.define(version: 20170401092006) do
     t.integer "item_id", null: false
     t.string "event", null: false
     t.string "whodunnit"
-    t.text "object", limit: 1073741823
+    t.text "object"
     t.datetime "created_at"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "friendships", "users"
+  add_foreign_key "interviews", "companies"
+  add_foreign_key "resumes", "users"
+  add_foreign_key "social_profiles", "users"
 end

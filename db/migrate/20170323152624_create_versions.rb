@@ -1,12 +1,12 @@
 # This migration creates the `versions` table, the only schema PT requires.
 # All other migrations PT provides are optional.
-class CreateVersions < ActiveRecord::Migration
+class CreateVersions < ActiveRecord::Migration[5.1]
   # Class names of MySQL adapters.
   # - `MysqlAdapter` - Used by gems: `mysql`, `activerecord-jdbcmysql-adapter`.
   # - `Mysql2Adapter` - Used by `mysql2` gem.
   MYSQL_ADAPTERS = [
-    "ActiveRecord::ConnectionAdapters::MysqlAdapter",
-    "ActiveRecord::ConnectionAdapters::Mysql2Adapter"
+    'ActiveRecord::ConnectionAdapters::MysqlAdapter',
+    'ActiveRecord::ConnectionAdapters::Mysql2Adapter'
   ].freeze
 
   # The largest text column available in all supported RDBMS is
@@ -17,11 +17,11 @@ class CreateVersions < ActiveRecord::Migration
 
   def change
     create_table :versions, versions_table_options do |t|
-      t.string   :item_type, item_type_options
-      t.integer  :item_id,   null: false
-      t.string   :event,     null: false
-      t.string   :whodunnit
-      t.text     :object, limit: TEXT_BYTES
+      t.string :item_type, item_type_options
+      t.integer :item_id, null: false
+      t.string :event, null: false
+      t.string :whodunnit
+      t.text :object, limit: TEXT_BYTES
 
       # Known issue in MySQL: fractional second precision
       # -------------------------------------------------
@@ -72,7 +72,7 @@ class CreateVersions < ActiveRecord::Migration
   #
   def versions_table_options
     if mysql?
-      { options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci" }
+      { options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci' }
     else
       {}
     end
