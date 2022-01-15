@@ -58,7 +58,7 @@ gem 'erubis'
 ########################################
 
 gem 'pg', group: :production
-gem 'sqlite3', group: [:development, :test]
+gem 'sqlite3', '< 1.4', group: [:development, :test]
 
 gem 'paper_trail'
 
