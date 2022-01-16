@@ -65,8 +65,6 @@ gem 'omniauth-rails_csrf_protection'
 
 gem 'active_decorator'
 
-gem 'rails_admin'
-
 gem 'pry-rails'
 
 gem 'bootstrap-sass', '~> 3'
