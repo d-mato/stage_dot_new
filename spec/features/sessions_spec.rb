@@ -33,9 +33,9 @@ RSpec.feature 'Sessions' do
   end
 
   describe 'No session' do
-    specify 'トップページにリダイレクトされること' do
+    specify 'リダイレクトされること' do
       visit '/companies'
-      expect(page.current_path).to eq '/'
+      expect(page.current_path).to eq '/users/sign_in'
     end
   end
 end
