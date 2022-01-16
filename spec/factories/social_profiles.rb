@@ -4,6 +4,6 @@ FactoryGirl.define do
     nickname { Faker::Name.name }
     name { Faker::Internet.user_name }
     provider 'github'
-    uid { Faker::Number.unique.number(10) }
+    uid { Faker::Number.unique.number(digits: 10) }
   end
 end
