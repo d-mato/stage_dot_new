@@ -55,7 +55,6 @@ gem 'bootsnap', require: false
 gem 'paper_trail'
 
 gem 'devise'
-gem 'dotenv-rails'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
