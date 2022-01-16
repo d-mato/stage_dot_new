@@ -344,7 +344,6 @@ DEPENDENCIES
   bootswatch-rails
   byebug
   capybara
-  coffee-rails (~> 4.2)
   devise
   dotenv-rails
   erubis
