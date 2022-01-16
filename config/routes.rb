@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :feeds, only: [:index]
 
   authenticated :user do
-    root 'home#index'
+    root 'home#index', as: :authenticated_root
   end
 
   unauthenticated :user do

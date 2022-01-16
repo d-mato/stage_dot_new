@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
   # 引数のUserが友達、もしくは自身でなければリダイレクト
   def authenticate_friend!(user)
     return true if current_user == user || current_user.friend?(user)
-    redirect_to root_path, flash: { warning: '友達でないユーザーのページは表示できません' }
+    redirect_to authenticated_root_path, flash: { warning: '友達でないユーザーのページは表示できません' }
   end
 end

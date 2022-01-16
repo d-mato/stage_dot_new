@@ -5,12 +5,12 @@ nav.navbar.navbar-default
       span.icon-bar
       span.icon-bar
       span.icon-bar
-    = link_to 'Stage.new', root_path, class: 'navbar-brand'
+    = link_to 'Stage.new', '/', class: 'navbar-brand'
 
   .navbar-collapse.collapse#navbar
     ul.nav.navbar-nav
       li class="#{:active if controller_path == 'home'}"
-        = link_to 'Home', root_path
+        = link_to 'Home', authenticated_root_path
       li class="#{:active if controller_path == 'companies'}"
         = link_to 'Companies', companies_path
       li class="#{:active if controller_path == 'interviews'}"
