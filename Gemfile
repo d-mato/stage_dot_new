@@ -66,6 +66,7 @@ gem 'dotenv-rails'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
+gem 'omniauth-rails_csrf_protection'
 
 gem 'active_decorator'
 
