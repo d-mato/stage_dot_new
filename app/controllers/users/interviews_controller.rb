@@ -1,6 +1,4 @@
-class Users::InterviewsController < ApplicationController
-  before_action :authenticate_user!
-
+class Users::InterviewsController < AuthorizedController
   # GET /users/:user_id/interviews/1
   def show
     @user = User.find(params[:user_id])

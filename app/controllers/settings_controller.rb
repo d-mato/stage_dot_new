@@ -1,6 +1,4 @@
-class SettingsController < ApplicationController
-  before_action :authenticate_user!
-
+class SettingsController < AuthorizedController
   def account
     return render if request.get?
 

@@ -1,5 +1,4 @@
-class ResumesController < ApplicationController
-  before_action :authenticate_user!
+class ResumesController < AuthorizedController
   before_action :set_resume
 
   # GET /resume

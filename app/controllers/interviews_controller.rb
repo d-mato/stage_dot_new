@@ -1,5 +1,4 @@
-class InterviewsController < ApplicationController
-  before_action :authenticate_user!
+class InterviewsController < AuthorizedController
   before_action :set_company, only: [:new, :create]
   before_action :set_interview, only: [:show, :edit, :update, :destroy]
 
