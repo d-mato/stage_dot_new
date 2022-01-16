@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe CompaniesController, type: :controller do
   let(:user) { FactoryGirl.create :user }
-  let(:companies) { FactoryGirl.create_list(:company, 10, user_id: user.id) }
-  let(:archived_companies) { FactoryGirl.create_list(:company, 10, archived_at: Time.zone.now, user_id: user.id) }
   let(:someone) { FactoryGirl.create :user }
-  let(:someones_companies) { FactoryGirl.create_list(:company, 10, user_id: someone.id) }
+  let!(:companies) { FactoryGirl.create_list(:company, 10, user_id: user.id) }
+  let!(:archived_companies) { FactoryGirl.create_list(:company, 10, archived_at: Time.zone.now, user_id: user.id) }
+  let!(:someones_companies) { FactoryGirl.create_list(:company, 10, user_id: someone.id) }
 
   before { sign_in user }
 
@@ -15,7 +15,7 @@ describe CompaniesController, type: :controller do
     it('returns 200') { expect(response.status).to eq 200 }
 
     it '@companiesにcurrent_userに属するアーカイブされていないCompanyを割り当てること' do
-      expect(assigns(:companies)).to eq companies
+      expect(assigns(:companies)).to match_array companies
     end
   end
 
@@ -123,7 +123,7 @@ describe CompaniesController, type: :controller do
     it('returns 200') { expect(response.status).to eq 200 }
 
     it '@companiesにcurrent_userに属するアーカイブされているCompanyを割り当てること' do
-      expect(assigns(:companies)).to eq archived_companies
+      expect(assigns(:companies)).to match_array archived_companies
     end
   end
 
